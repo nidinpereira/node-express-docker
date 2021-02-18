@@ -20,16 +20,6 @@ const HOST = process.env.HOST as string;
 
 const app = express();
 
-
-
-/**
- *  Server Endpoints
- */
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
-
-
 /**
  *  Server Configuration
  */
@@ -38,8 +28,17 @@ app.use(cors());
 app.use(express.json());
 
 /**
+ *  Server Endpoints
+ */
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+/**
  * Server Activation
  */
-app.listen(PORT, HOST, () => {
-    console.log(`Listening on port ${PORT}`);
+let server = app.listen(PORT, HOST, async () => {
+    await console.log(`Listening on port ${PORT}`);
 });
+
+export default server
